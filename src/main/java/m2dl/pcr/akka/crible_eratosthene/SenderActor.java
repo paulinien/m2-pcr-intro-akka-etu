@@ -1,7 +1,6 @@
 package m2dl.pcr.akka.crible_eratosthene;
 
 import akka.actor.ActorRef;
-import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
@@ -21,9 +20,10 @@ public class SenderActor extends UntypedActor {
     Procedure<Object> sender = new Procedure<Object>() {
         public void apply(Object n) throws Exception {
             if (n instanceof Integer) {
-                a.tell(1, self());
+                log.info("Envoi de 3");
+                a.tell(3, self());
                 nMax = (Integer) n;
-                x = 2;
+                x = 4;
                 getContext().become(senderLoop, false);
             } else {
                 unhandled(n);
@@ -36,8 +36,11 @@ public class SenderActor extends UntypedActor {
             if(msg instanceof String){
                 if("ok".equalsIgnoreCase(((String) msg))) {
                     if(x <= nMax) {
+                        log.info("Envoi de " + x);
                         a.tell(x, self());
                         x++;
+                    } else {
+                        a.tell("stop", self());
                     }
                 }
             } else {

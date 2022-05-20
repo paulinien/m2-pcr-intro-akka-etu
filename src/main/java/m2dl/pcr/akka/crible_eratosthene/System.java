@@ -16,20 +16,12 @@ public class System {
 
         Thread.sleep(5000);
 
-        final ActorRef actorRef = actorSystem.actorOf(Props.create(FilterActor.class, 2), "filter-2-actor");
+        final ActorRef filterZeroRef = actorSystem.actorOf(Props.create(FilterActor.class, 2), "filter-2-actor");
 
-        for(int i=3; i<100; i++) {
-            actorRef.tell(i,null);
-        }
+        final ActorRef sender = actorSystem.actorOf(Props.create(SenderActor.class, filterZeroRef), "sender-actor");
+        sender.tell(50, null);
 
-        actorRef.tell("stop",null);
-
-//        actorRef.tell("Pauline",null);
-//        actorRef.tell("Eva",null);
-//        actorRef.tell("Bill",null);
-//        actorRef.tell("Marc",null);
-
-        Thread.sleep(3000);
+        Thread.sleep(10000);
 
         log.debug("Actor System Shutdown Starting...");
 
