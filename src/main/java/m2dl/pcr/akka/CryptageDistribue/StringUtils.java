@@ -1,4 +1,4 @@
-package m2dl.pcr.akka.stringservices;
+package m2dl.pcr.akka.CryptageDistribue;
 
 /**
  * Created by franck on 23/05/2016.
@@ -55,10 +55,10 @@ public class StringUtils {
     /* juste pour le test */
     public static void main(String args[]) {
         String s=args[0];
-//        System.out.println(s);
-//        System.out.println(crypte(s));
-//        System.out.println(decrypte(crypte(s)));
-//        System.out.println(ajouteCtrl(s));
-//        System.out.println(verifieCtrl(ajouteCtrl(s)));
+//        SystemRemote.out.println(s);
+//        SystemRemote.out.println(crypte(s));
+//        SystemRemote.out.println(decrypte(crypte(s)));
+//        SystemRemote.out.println(ajouteCtrl(s));
+//        SystemRemote.out.println(verifieCtrl(ajouteCtrl(s)));
     }
 }
